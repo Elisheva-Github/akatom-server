@@ -38,9 +38,10 @@ const mailSender = async (req, res) => {
     mailOptions = {
         // from: 'leadersdashboard@gmail.com',
         // to: contact.email,
-        to:req.body.email,
+        to: req.body.email,
         subject: 'Sending Email using Node.js',
-        //html:contact.name+" נושא פניתך:"+contact.subject
+        html: req.body.em + "בעל המייל :" + req.body.phoneNumber + " והטלפון שלו הוא: " + " ישמח להצטרף לנסיעתך",
+
         text: 'That was easy!'
         ,
         // text:contact
