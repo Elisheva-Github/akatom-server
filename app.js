@@ -28,7 +28,9 @@ mogoose.connect(process.env.DB_CONNECT, connectionParams)
 
 app.use('/', router);
 
-
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 //app.use()
 app.listen(3000, (req, res) => {
     console.log("listen...... 3000");

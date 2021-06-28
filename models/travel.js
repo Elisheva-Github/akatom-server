@@ -6,55 +6,55 @@ const travelSchema = mongoose.Schema({
         type: Date,
         //require: true
     },
-    hour:{
+    hour: {
         type: String,
         //require: true
     },
 
-    destination:{
+    destination: {
         type: String,
         //require: true
     },
-    departure:{
+    departure: {
         type: String,
         //require: true  
     },
-    payment:{
+    payment: {
         type: Boolean,
         //require: true 
     },
     //male / female
-    gender:{
+    gender: {
         type: String,
         //require: true
     },
-    numPassengers:{
+    numPassengers: {
         type: Number,
-        require: true  
+        // require: true  
     },
-    email:{
+    email: {
         type: String,
-        require: true,
-        match: /(.+)@(.+){2,}\.(.+){2,}/i
+        // require: true,
+        // match: /(.+)@(.+){2,}\.(.+){2,}/i
     },
-    phone:{
+    phone: {
         type: String,
         //require: true
     },
-    emailAlerts:{
+    emailAlerts: {
         type: Boolean,
         //require: true  
     },
-    phoneAlerts:{
+    phoneAlerts: {
         type: Boolean,
         //require: true  
     },
     //driver/passenger
-    userType:{
+    userType: {
         type: String,
         //require: true
     }
-    
+
 })
 
-module.exports = mongoose.model('Travel',travelSchema)
+module.exports = mongoose.model('Travel', travelSchema)
