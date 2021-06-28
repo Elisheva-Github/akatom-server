@@ -4,7 +4,7 @@ const travelSchema = mongoose.Schema({
 
     date: {
         type: Date,
-        require: true
+        //require: true
     },
     hour:{
         type: String,

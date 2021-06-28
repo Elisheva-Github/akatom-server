@@ -2,7 +2,7 @@ const travel = require('../models/travel');
 
 //create
 const createTravel = async (req, res) => {
-    
+
     try {
         res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
         let myTravel = new travel(req.body);
