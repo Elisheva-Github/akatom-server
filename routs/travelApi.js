@@ -4,11 +4,12 @@ const travelController = require('../controllers/travelController')
 
 
 //user
-route.post('/createTravel',travelController.createTravel);
-route.get('/getAllDrivers',travelController.getAllDrivers);
-route.get('/getAllPassengers',travelController.getAllPassengers);
-route.put('/updateTravel/:id',travelController.updateTravel);
-route.delete('/deleteTravel/:id',travelController.deleteTravel);
+route.post('/createTravel', travelController.createTravel);
+route.post('/mail', travelController.mailSender);
+route.get('/getAllDrivers', travelController.getAllDrivers);
+route.get('/getAllPassengers', travelController.getAllPassengers);
+route.put('/updateTravel/:id', travelController.updateTravel);
+route.delete('/deleteTravel/:id', travelController.deleteTravel);
 
 // //image
 // route.post('/createImage', imageController.createImage);

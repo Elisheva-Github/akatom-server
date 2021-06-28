@@ -1,4 +1,8 @@
 const travel = require('../models/travel');
+var nodemailer = require('nodemailer');
+const env = require('dotenv')
+env.config();
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 //create
 const createTravel = async (req, res) => {
@@ -16,6 +20,39 @@ const createTravel = async (req, res) => {
     catch {
         res.status(500).json({ err: error.massege });
     }
+}
+const mailSender = async (req, res) => {
+    console.log("--------------------");
+
+    console.log(req.body.email);
+
+    const { contact } = req.body
+    //אתחול המשתנים של שליחת המייל
+    transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'akaton.tremp@gmail.com ',
+            pass: process.env.PAS,
+        }
+    });
+    mailOptions = {
+        // from: 'leadersdashboard@gmail.com',
+        // to: contact.email,
+        to:req.body.email,
+        subject: 'Sending Email using Node.js',
+        //html:contact.name+" נושא פניתך:"+contact.subject
+        text: 'That was easy!'
+        ,
+        // text:contact
+    };
+    //הפעלת הפונקציה
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.error('error on mailSender ', error);
+        } else {
+            console.info('Email sent: ' + info.response);
+        }
+    })
 }
 
 
@@ -83,4 +120,4 @@ const getTravelById = (req, res) => {
 }
 
 
-module.exports = { createTravel, updateTravel, deleteTravel, getAllDrivers, getAllPassengers, getTravelById };
+module.exports = { createTravel, updateTravel, deleteTravel, getAllDrivers, getAllPassengers, getTravelById, mailSender };
