@@ -120,5 +120,70 @@ const getTravelById = (req, res) => {
         })
 }
 
+const getAllDriversInternal = async (req, res) => {
+    try {
+        let drivers = await travel.find({ userType: "driver" })//.exec();
 
-module.exports = { createTravel, updateTravel, deleteTravel, getAllDrivers, getAllPassengers, getTravelById, mailSender };
+        return drivers
+    }
+    catch (error) {
+        console.log("getDrivers catch " + error.massege)
+    }
+}
+const getAllPassengersInternal = async () => {
+    try {
+        let passengers = await travel.find({ userType: "passenger" })//.exec();
+
+        return passengers;
+    }
+    catch (error) {
+        console.log("getPassengers catch");
+    }
+}
+const getOpposite = async (userType) => {
+    try {
+
+        if (userType == "passenger") {
+            console.log("passenger")
+            let drivers = await getAllDriversInternal()
+            return drivers
+        } else {
+            console.log("other")
+            let passengers = await getAllPassengersInternal();
+            return passengers
+        }
+    } catch (error) {
+        console.log("getOpposite catch");
+    }
+}
+
+const saveTravel = async (req, res) => {
+    try {
+        createTravel(req)
+        console.log("userType " + req.body.userType)
+        let result = await getOpposite(req.body.userType)
+        const newAllTravels = result.map(function (it) {
+            if (
+                it.gender == req.body.gender && it.userType != req.body.userType
+            ) {
+                return it;
+            }
+        }
+        )
+        if (newAllTravels == null) {
+            res.send("Sorry, we don't found Travels for you...");
+        }
+
+        console.log(newAllTravels)
+        return res.status(200).json({ status: 200, result: newAllTravels });
+
+
+    } catch (error) {
+        console.log("catch")
+        // return res.status(500)
+        return res.status(500).json({ error: error.maggase });
+    }
+}
+
+
+module.exports = { saveTravel, createTravel, updateTravel, deleteTravel, getAllDrivers, getAllPassengers, getTravelById, mailSender };

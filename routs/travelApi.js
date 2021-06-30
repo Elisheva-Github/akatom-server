@@ -4,7 +4,7 @@ const travelController = require('../controllers/travelController')
 
 
 //user
-route.post('/createTravel', travelController.createTravel);
+route.post('/createTravel',travelController.saveTravel);
 route.post('/mail', travelController.mailSender);
 route.get('/getAllDrivers', travelController.getAllDrivers);
 route.get('/getAllPassengers', travelController.getAllPassengers);
