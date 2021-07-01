@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const travelSchema = mongoose.Schema({
 
     date: {
-        type: Date,
+        type: String,
         //require: true
     },
     hour: {
@@ -51,7 +51,7 @@ const travelSchema = mongoose.Schema({
     },
     //driver/passenger
     userType: {
-        type: String,
+        type: Boolean,
         //require: true
     }
 

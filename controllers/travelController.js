@@ -83,7 +83,7 @@ const deleteTravel = async (req, res) => {
 //getAllImage
 const getAllDrivers = async (req, res) => {
     try {
-        let drivers = await travel.find({ userType: "driver" })//.exec();
+        let drivers = await travel.find({ userType: true })//.exec();
         if (drivers == null) {
             res.send("you don't have drivers!");
         }
@@ -96,7 +96,7 @@ const getAllDrivers = async (req, res) => {
 
 const getAllPassengers = async (req, res) => {
     try {
-        let passengers = await travel.find({ userType: "passenger" })//.exec();
+        let passengers = await travel.find({ userType: false })//.exec();
         if (passengers == null) {
             res.send("you don't have Passengers!");
         }
