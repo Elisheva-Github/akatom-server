@@ -39,11 +39,14 @@ const mailSender = async (req, res) => {
         // from: 'leadersdashboard@gmail.com',
         // to: contact.email,
         to: req.body.email,
-        subject: 'Sending Email using Node.js',
-        html: req.body.em + "בעל המייל :" + req.body.phoneNumber + " והטלפון שלו הוא: " + " ישמח להצטרף לנסיעתך",
-
-        text: 'That was easy!'
-        ,
+        subject: 'קארפול רמות - נמצאה נסיעה מתאימה',
+    
+       html: '<b>שלום וברכה </b><br> בהמשך לבקשתך , נמצא שותף מתאים לנסיעתך<br /> <br>' +
+       'מייל ליצירת קשר:' +  req.body.em + ' <br>' + 'טלפון :'  + req.body.phoneNumber +' <br/><br/>ישמח להצטרף לנסיעתך<br/><br/>',
+       text: '<h1>  ...נא צרו קשר בינכם ,בהצלחה !!!!</h1>'
+       ,
+        // text: 'That was easy!'
+        
         // text:contact
     };
     //הפעלת הפונקציה
